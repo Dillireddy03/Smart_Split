@@ -37,13 +37,18 @@ export default function Auth() {
         return;
       }
 
-      const success = register(form);
-      if (!success) {
-        setError("User already exists");
-        return;
-      }
+const success = register(form);
 
-      setIsLogin(true);
+if (!success) {
+  setError("User already exists");
+  return;
+}
+
+
+const loggedIn = login(form.email, form.password);
+if (loggedIn) {
+  navigate("/");
+}
     }
   };
 
